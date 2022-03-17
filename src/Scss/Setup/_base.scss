@@ -23,3 +23,14 @@ a {
   font-family: inherit;
   cursor: pointer;
 }
+
+.App {
+  background-color: salmon;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+}
