@@ -1,37 +1,37 @@
-import { Suspense, useRef } from "react";
-// Three
-import { TextureLoader } from "three";
-// R3F + Drei
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-// Assets
-import cakes from "./Assets/Images/cakes.jpg";
-import canap from "./Assets/Images/canap.jpg";
-import eliott from "./Assets/Images/eliott.jpg";
+// Components
+import CanvasContainer from "./Three/ThreeElements/CanvasContainer";
+import Scene1 from "./Three/ThreeScenes/Scene1";
+import Scene2 from "./Three/ThreeScenes/Scene2";
+// React Router
+import { Routes, Route } from "react-router";
+import { NavLink } from "react-router-dom";
 // Styling
 import "./Scss/style.scss";
 
-function Scene() {
-  const spriteRef = useRef();
-  const texture = useLoader(TextureLoader, cakes);
-  console.log(spriteRef.current);
-  useFrame((state, delta) => {});
-  return (
-    <sprite ref={spriteRef} scale={[5, 5]}>
-      <spriteMaterial map={texture} />
-    </sprite>
-  );
-}
+const ImgTransition1 = () => (
+  <CanvasContainer>
+    <Scene1 />
+  </CanvasContainer>
+);
+
+const ImgTransition2 = () => (
+  <CanvasContainer>
+    <Scene2 />
+  </CanvasContainer>
+);
 
 function App() {
   return (
     <div className="App">
-      <Canvas>
-        <OrbitControls />
-        <Suspense fallback={null}>
-          <Scene />
-        </Suspense>
-      </Canvas>
+      <div className="Navbar flex justify-start">
+        <NavLink to="/">Scene 1</NavLink>
+        <NavLink to="/scene2">Scene 2</NavLink>
+        <NavLink to="/scene3">Scene 3</NavLink>
+      </div>
+      <Routes>
+        <Route path="/" element={<ImgTransition1 />} />
+        <Route path="/scene2" element={<ImgTransition2 />} />
+      </Routes>
     </div>
   );
 }
