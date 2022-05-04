@@ -23,11 +23,11 @@ const ImgTransition2 = () => (
 function App() {
   return (
     <div className="App">
-      <div className="Navbar flex justify-start">
+      {/* <div className="Navbar flex justify-start">
         <NavLink to="/">Scene 1</NavLink>
         <NavLink to="/scene2">Scene 2</NavLink>
         <NavLink to="/scene3">Scene 3</NavLink>
-      </div>
+      </div> */}
       <Routes>
         <Route path="/" element={<ImgTransition1 />} />
         <Route path="/scene2" element={<ImgTransition2 />} />
